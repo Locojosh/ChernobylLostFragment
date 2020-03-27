@@ -1138,7 +1138,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1626070098}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: OnClick_NuevaPartida
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1787021824
 GameObject:
   m_ObjectHideFlags: 0
@@ -1679,6 +1690,7 @@ GameObject:
   - component: {fileID: 326546384431526565}
   - component: {fileID: 326546384431526567}
   - component: {fileID: 326546384431526566}
+  - component: {fileID: 1584440720}
   m_Layer: 5
   m_Name: Menu_De_Inicio
   m_TagString: Untagged
@@ -1742,6 +1754,18 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &1584440720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 326546384431526564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2ae63e0507e6a8b6bb0a39dd2ec0ac3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &326546384793528357
 GameObject:
   m_ObjectHideFlags: 0
