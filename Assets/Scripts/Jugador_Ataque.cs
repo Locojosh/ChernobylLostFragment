@@ -16,12 +16,13 @@ public class Jugador_Ataque : MonoBehaviour
         coliderA = transform.Find("Ataque_Collider").gameObject.GetComponent<BoxCollider>();
         
     }
-    private void OnTriggerStay(Collider other) //BARRETA
+    private void OnTriggerStay(Collider other) //Cuando el collider de ataque del jugador choca con otro GameObject
     {
-        if(other.tag == "enemigo")
-        if(Input.GetButtonDown("Arma"))
+        if(other.tag == "enemigo")              //El GameObject es un enemigo
+        if(Input.GetButtonDown("Arma"))         //USAR BARRETA
         {
-            DañarEnemigo(other.gameObject, porcentajeDañoBarreta); 
+            other.gameObject.GetComponent<Enemigo_Control>().QuitarVida(porcentajeDañoBarreta);
+            PlayAnimacionBarreta();
         }         
     }
     private void UsarArmaScientifica()
@@ -33,11 +34,9 @@ public class Jugador_Ataque : MonoBehaviour
 
     }
 
-    private void DañarEnemigo(GameObject enemigo, int daño)
+    private void PlayAnimacionBarreta()
     {
-        enemigo.GetComponent<Enemigo_Control>().QuitarVida(daño);
-        //Animacion     
-        Animator anim = enemigo.GetComponent<Animator>();  
-        if()
-    }
+        Animator anim = this.GetComponent<Animator>();  //***NOTA*** El jugador debe tener un componente Animator
+        anim.SetTrigger("barreta");                 //***NOTA*** La animacion de ataque de barreta  del jugador 
+    }                                               //debe tener un trigger llamado "barreta"
 }
