@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Menu_De_Inicio.unity
+- path: Assets/Scenes/Pruebas_JugadorAtaque.unity
   isLoaded: 1
   isActive: 1
