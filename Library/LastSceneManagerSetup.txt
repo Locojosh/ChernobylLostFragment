@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/SampleScene.unity
+=======
+- path: Assets/Scenes/Pruebas_JugadorAtaque.unity
+>>>>>>> 4dd6edbd7340be171b2e3b95750365b2d048b129
   isLoaded: 1
   isActive: 1
