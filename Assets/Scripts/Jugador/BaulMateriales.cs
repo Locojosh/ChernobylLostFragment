@@ -5,10 +5,11 @@ using UnityEngine;
 public class BaulMateriales
 {
     List<string> listaObjetos;
-
-    private void Awake() 
+    public BaulMateriales()
     {
         listaObjetos = new List<string>();
+        listaObjetos.Add("objetoejemplo1");
+        listaObjetos.Add("objetoejemplo2");
     }
 
     public void RecogerObjeto(string objeto)
@@ -24,6 +25,15 @@ public class BaulMateriales
             o = obj;
         }
         return o;
+    }
+    public string DevolverTodosLosObjetos()
+    {
+        string objetos = "";
+        for (int i = 0; i < listaObjetos.Count; i++)
+        {
+            objetos += listaObjetos[i] + " | ";
+        }
+        return objetos;
     }
 
 }

@@ -111,6 +111,7 @@ GameObject:
   - component: {fileID: 458423409083748899}
   - component: {fileID: 458423409083748898}
   - component: {fileID: 832469903152292247}
+  - component: {fileID: 252751548863594068}
   - component: {fileID: 1818423549825563218}
   - component: {fileID: 6881057570597387872}
   m_Layer: 0
@@ -205,6 +206,20 @@ MonoBehaviour:
   explosivoPrefabRB: {fileID: 402649439347811622, guid: 6dc0cfb66d8cca7f38d3f5477ddf8b4d,
     type: 3}
   velocidadExplosivo: 10
+--- !u!114 &252751548863594068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 458423409083748897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b24f3e1bbd59421c9a671951905ca0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sGameOver: {fileID: 0}
+  listaCarasUI: []
 --- !u!54 &1818423549825563218
 Rigidbody:
   m_ObjectHideFlags: 0

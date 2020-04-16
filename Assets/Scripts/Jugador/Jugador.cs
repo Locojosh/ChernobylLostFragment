@@ -1,16 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Jugador : MonoBehaviour
 {
     public GameOver_Control sGameOver; //Arrastrar desde UI
-    int vida = 100;
-    string hablar = "Hola";
-    BaulMateriales baulMateriales;
-    Sprite caraActual;
+    int vida = 50;
+    public int Vida { get { return vida; } }
+    public string hablar = "Hola";
+    public BaulMateriales baulMateriales;
+    public Sprite caraActual;
     public Sprite[] listaCarasUI; 
-    int nivelRadiacion; //Radiacion del lugar en que se encuentra
+    int nivelRadiacion = 77; //Radiacion del lugar en que se encuentra
     public int NivelRadiacion { get { return nivelRadiacion; } set { nivelRadiacion = value; } }
     
     private void Awake() 
@@ -21,7 +23,7 @@ public class Jugador : MonoBehaviour
     {
         vida -= daño;
     }
-    public void Hablar(string mensaje)
+    public void HablarMensaje(string mensaje)
     {
         hablar = mensaje;
     }
