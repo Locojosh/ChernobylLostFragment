@@ -10,7 +10,7 @@ public class Bala : MonoBehaviour
 
     private void Start() 
     {
-        porcentajeDañoArmaScientifica = GameObject.Find("Jugador").GetComponent<Jugador_Ataque>().porcentajeDañoArmaScientifica;
+        porcentajeDañoArmaScientifica = GameObject.Find("Player").GetComponent<Jugador_Ataque>().porcentajeDañoArmaScientifica;
         vidaTimer = tiempoDeVida;
     }
     private void Update() 

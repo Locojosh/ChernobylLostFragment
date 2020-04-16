@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class Jugador_Ataque : MonoBehaviour
 {
     //Generales
+    public string nombreBotonCambiarArma = "", nombreBotonDispararArma = "";
+    public string nombreTagEnemigo;
     public int porcentajeDañoBarreta = 25;
     public int porcentajeDañoArmaScientifica = 15;
     public int porcentajeDañoExplosivo = 50;
@@ -13,6 +15,7 @@ public class Jugador_Ataque : MonoBehaviour
     
     //Especificas a Armas Especificas
     //Barreta
+    public Animator animator;
     private BoxCollider coliderA;
     public string nombreAnimacionBarreta = "barreta"; //Nombre de la animacion de la barreta atacando
     //Arma scientifica
@@ -35,14 +38,14 @@ public class Jugador_Ataque : MonoBehaviour
     }
     private void Update() 
     {
-        if(Input.GetButtonDown("CambiarArma"))
+        if(Input.GetButtonDown(nombreBotonCambiarArma))
         {
             armaActual++;
             if(armaActual==4)
             armaActual = 1;
         }
         
-        if(Input.GetButtonDown("Arma"))
+        if(Input.GetButtonDown(nombreBotonDispararArma))
         {
             if(armaActual == 2)
             {
@@ -56,8 +59,8 @@ public class Jugador_Ataque : MonoBehaviour
     }
     private void OnTriggerStay(Collider other) //Cuando el collider de ataque del jugador choca con otro GameObject
     {
-        if(other.tag == "enemigo")              //El GameObject es un enemigo
-        if(Input.GetButtonDown("Arma") && armaActual==1)         //USAR BARRETA
+        if(other.tag == nombreTagEnemigo)              //El GameObject es un enemigo
+        if(Input.GetButtonDown(nombreBotonDispararArma) && armaActual==1)         //USAR BARRETA
         {
             other.gameObject.GetComponent<Enemigo_Control>().QuitarVida(porcentajeDañoBarreta);
             PlayAnimacionBarreta();
@@ -76,7 +79,6 @@ public class Jugador_Ataque : MonoBehaviour
     }
     private void PlayAnimacionBarreta()
     {
-        Animator anim = this.GetComponent<Animator>();  //***NOTA*** El jugador debe tener un componente Animator
-        anim.SetTrigger(nombreAnimacionBarreta);     //La animacion de ataque de barreta  del jugador 
+        animator.SetTrigger(nombreAnimacionBarreta);     //La animacion de ataque de barreta  del jugador 
     }                                              
 }
