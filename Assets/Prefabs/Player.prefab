@@ -90,14 +90,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 458423408423561003}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f1c0f5f6b326c54bad57bf04b395b00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mouseXInputName: Mouse X
   mouseYInputName: Mouse Y
-  mouseSensitivity: 0.0001
+  mouseSensitivity: 36
   playerBody: {fileID: 458423409083748896}
 --- !u!1 &458423409083748897
 GameObject:
@@ -192,8 +192,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6cb0f52636940dab8117b0b93dfbb1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nombreBotonCambiarArma: CambiarArma
-  nombreBotonDispararArma: "\x13\x13Arma"
+  nombreBotonCambiarArma: Fire1
+  nombreBotonDispararArma: Fire2
   nombreTagEnemigo: enemigo
   "porcentajeDa\xF1oBarreta": 25
   "porcentajeDa\xF1oArmaScientifica": 15
@@ -219,6 +219,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sGameOver: {fileID: 0}
+  hablar: Hola
+  caraActual: {fileID: 0}
   listaCarasUI: []
 --- !u!54 &1818423549825563218
 Rigidbody:
@@ -323,7 +325,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3733111821677808055}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: 0.755, z: 0.05}
+  m_LocalPosition: {x: 1.15, y: 0.755, z: 0.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 458423409083748896}
