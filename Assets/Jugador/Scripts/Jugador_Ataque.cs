@@ -19,11 +19,11 @@ public class Jugador_Ataque : MonoBehaviour
     private BoxCollider coliderA;
     public string nombreAnimacionBarreta = "barreta"; //Nombre de la animacion de la barreta atacando
     //Arma scientifica
-    public Rigidbody balaPrefabRB;
+    public GameObject balaPrefab;
     private GameObject balaPuntoSalida;
     public int velocidadBala = 50;
     //Explosivo a lanzar
-    public Rigidbody explosivoPrefabRB; 
+    public GameObject explosivoPrefab; 
     private GameObject explosivoPuntoSalida;
     public int velocidadExplosivo = 10;
 
@@ -68,14 +68,16 @@ public class Jugador_Ataque : MonoBehaviour
     }
     private void DispararArmaScientifica()
     {
-        Rigidbody balaRB = Instantiate(balaPrefabRB, balaPuntoSalida.transform.position, balaPuntoSalida.transform.rotation); //Instancear bala
-        balaRB.velocity = transform.TransformDirection(Vector3.forward * velocidadBala); //Velocidad de la bala
+        GameObject clon = Instantiate(balaPrefab, balaPuntoSalida.transform.position, balaPuntoSalida.transform.rotation, balaPuntoSalida.transform) as GameObject; //Instancear bala
+        Rigidbody balaRB = clon.GetComponent<Rigidbody>();
+        balaRB.velocity = transform.TransformDirection(Vector3.down * velocidadBala); //Velocidad de la bala
     }
     private void TirarExplosivo()
     {
-        Rigidbody explosivoRB = Instantiate(explosivoPrefabRB, explosivoPuntoSalida.transform.position, explosivoPuntoSalida.transform.rotation); //Instancear explosivo a lanzar
-        Vector3 dirExplosivo = new Vector3(0, 0.5f, 1); //Direccion que el explosivo es lanzado
-        explosivoRB.velocity = transform.TransformDirection(dirExplosivo * velocidadExplosivo); //Velocidad del explosivo
+        GameObject clon = Instantiate<GameObject>(explosivoPrefab, explosivoPuntoSalida.transform.position, explosivoPuntoSalida.transform.rotation, explosivoPuntoSalida.transform); //Instancear explosivo a lanzar
+        Rigidbody explosivoRB = clon.GetComponent<Rigidbody>();
+        //Vector3 dirExplosivo = new Vector3(0, 0.5f, 1); //Direccion que el explosivo es lanzado
+        explosivoRB.velocity = transform.rotation.eulerAngles * velocidadExplosivo; //Velocidad del explosivo
     }
     private void PlayAnimacionBarreta()
     {
