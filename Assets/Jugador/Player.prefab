@@ -200,10 +200,10 @@ MonoBehaviour:
   "porcentajeDa\xF1oExplosivo": 50
   animator: {fileID: 6881057570597387872}
   nombreAnimacionBarreta: barreta
-  balaPrefabRB: {fileID: 7935143442439878028, guid: 9553bab07176b113ab8a9365d812130f,
+  balaPrefab: {fileID: 8979993839999042336, guid: 9553bab07176b113ab8a9365d812130f,
     type: 3}
   velocidadBala: 50
-  explosivoPrefabRB: {fileID: 402649439347811622, guid: 6dc0cfb66d8cca7f38d3f5477ddf8b4d,
+  explosivoPrefab: {fileID: 1663637727245423498, guid: 6dc0cfb66d8cca7f38d3f5477ddf8b4d,
     type: 3}
   velocidadExplosivo: 10
 --- !u!114 &252751548863594068
@@ -220,6 +220,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sGameOver: {fileID: 0}
   hablar: Hola
+  baulMateriales: {fileID: 0}
   caraActual: {fileID: 0}
   listaCarasUI: []
 --- !u!54 &1818423549825563218

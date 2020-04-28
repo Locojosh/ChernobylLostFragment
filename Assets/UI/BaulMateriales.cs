@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaulMateriales
+public class BaulMateriales: MonoBehaviour
 {
-    List<string> listaObjetos;
+    public List<string> listaObjetos = new List<string>();
+    Jugador_Interfaz jInterfaz;
+    private void Awake() {
+        jInterfaz = GameObject.Find("Interfaz_De_Partida").GetComponentInChildren<Jugador_Interfaz>();
+    }
     public BaulMateriales()
     {
         listaObjetos = new List<string>();
@@ -15,6 +19,7 @@ public class BaulMateriales
     public void RecogerObjeto(string objeto)
     {
         listaObjetos.Add(objeto);
+        jInterfaz.OnClick_Baul();
     }
     public string DevolverObjeto(string objeto)
     {
@@ -35,5 +40,14 @@ public class BaulMateriales
         }
         return objetos;
     }
-
+    public bool RevisarSiHayObjeto(string objeto)
+    {
+        bool encontrado = false;
+        foreach (var elemento in listaObjetos)
+        {
+            if(elemento == objeto)
+            encontrado = true;
+        }
+        return encontrado;
+    }
 }

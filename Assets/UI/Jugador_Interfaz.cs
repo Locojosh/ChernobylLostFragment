@@ -14,6 +14,7 @@ public class Jugador_Interfaz : MonoBehaviour
     private BaulMateriales iBaul;
     private bool mostrarBaul = false; 
     public float timerMostarBaulComienzo = 5f;
+    public KeyCode keyBaul;
     private float timerMostarBaul = 0f;
     private Image iCara;
     private TextMeshProUGUI iRadiacionTexto;
@@ -43,6 +44,16 @@ public class Jugador_Interfaz : MonoBehaviour
         //Hablar
         iTextos.text = jugador.hablar;
         //Baul
+        if(Input.GetKeyDown(keyBaul))
+        {
+            if(mostrarBaul) mostrarBaul = false;
+            else
+            {
+                mensajeiTextosAntes = iTextos.text;        
+                timerMostarBaul = timerMostarBaulComienzo;
+                mostrarBaul = true;
+            }
+        }
         if(mostrarBaul) 
         {
             //iTextos.text = "jfkdl";

@@ -17,7 +17,7 @@ public class Jugador : MonoBehaviour
     
     private void Awake() 
     {
-        baulMateriales = new BaulMateriales();
+        baulMateriales = GameObject.Find("Baul_Materiales").GetComponent<BaulMateriales>();
     }
     public void RecibirDaño(int daño)
     {

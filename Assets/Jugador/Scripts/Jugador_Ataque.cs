@@ -70,7 +70,7 @@ public class Jugador_Ataque : MonoBehaviour
     {
         GameObject clon = Instantiate(balaPrefab, balaPuntoSalida.transform.position, balaPuntoSalida.transform.rotation, balaPuntoSalida.transform) as GameObject; //Instancear bala
         Rigidbody balaRB = clon.GetComponent<Rigidbody>();
-        balaRB.velocity = transform.TransformDirection(Vector3.down * velocidadBala); //Velocidad de la bala
+        balaRB.velocity = transform.TransformDirection(transform.forward * velocidadBala); //Velocidad de la bala
     }
     private void TirarExplosivo()
     {

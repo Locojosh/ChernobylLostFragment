@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5744601516327708014}
   m_Layer: 0
   m_Name: EnemigoCercano
-  m_TagString: Untagged
+  m_TagString: enemigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
