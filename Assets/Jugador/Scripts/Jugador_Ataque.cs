@@ -21,6 +21,7 @@ public class Jugador_Ataque : MonoBehaviour
     //Arma scientifica
     public GameObject balaPrefab;
     private GameObject balaPuntoSalida;
+    public GameObject balas;
     public int velocidadBala = 50;
     //Explosivo a lanzar
     public GameObject explosivoPrefab; 
@@ -35,6 +36,7 @@ public class Jugador_Ataque : MonoBehaviour
         balaPuntoSalida = transform.Find("BalaPuntoSalida").gameObject;
         //Explosivo a lanzar
         explosivoPuntoSalida = transform.Find("ExplosivoPuntoSalida").gameObject;
+        balas = GameObject.Find("Balas");
     }
     private void Update() 
     {
@@ -46,15 +48,15 @@ public class Jugador_Ataque : MonoBehaviour
         }
         
         if(Input.GetButtonDown(nombreBotonDispararArma))
-        {
-            if(armaActual == 2)
+        {DispararArmaScientifica();
+            /*if(armaActual == 2)
             {
                 DispararArmaScientifica();
             }
             else if(armaActual == 3)
             {
                 TirarExplosivo();
-            }
+            }*/
         }
     }
     private void OnTriggerStay(Collider other) //Cuando el collider de ataque del jugador choca con otro GameObject
@@ -68,10 +70,12 @@ public class Jugador_Ataque : MonoBehaviour
     }
     private void DispararArmaScientifica()
     {
-        GameObject clon = Instantiate(balaPrefab, balaPuntoSalida.transform.position, balaPuntoSalida.transform.rotation, balaPuntoSalida.transform) as GameObject; //Instancear bala
-        Rigidbody balaRB = clon.GetComponent<Rigidbody>();
-        balaRB.velocity = transform.TransformDirection(transform.forward * velocidadBala); //Velocidad de la bala
+        GameObject clon = Instantiate(balaPrefab, balaPuntoSalida.transform.position, Quaternion.identity, balas.transform) as GameObject; //Instancear bala
+        //Rigidbody balaRB = clon.GetComponent<Rigidbody>();
+        //balaRB.AddRelativeForce(0, velocidadBala, 0); //Velocidad de la bala
+        
     }
+
     private void TirarExplosivo()
     {
         GameObject clon = Instantiate<GameObject>(explosivoPrefab, explosivoPuntoSalida.transform.position, explosivoPuntoSalida.transform.rotation, explosivoPuntoSalida.transform); //Instancear explosivo a lanzar

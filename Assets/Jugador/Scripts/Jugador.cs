@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Jugador : MonoBehaviour
 {
     public GameOver_Control sGameOver; //Arrastrar desde UI
-    int vida = 50;
+    public int vida = 100;
     public int Vida { get { return vida; } }
     public string hablar = "Hola";
     public BaulMateriales baulMateriales;
