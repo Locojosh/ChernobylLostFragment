@@ -217,7 +217,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sGameOver: {fileID: 0}
+  vida: 100
   hablar: Hola
+  baulMateriales: {fileID: 0}
   caraActual: {fileID: 0}
   listaCarasUI: []
 --- !u!1 &152692701
@@ -383,6 +385,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemigoCercano
       objectReference: {fileID: 0}
+    - target: {fileID: 5744601516327708011, guid: 7ee66d9f973ab3d7084180d6b76525ba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5744601516327708015, guid: 7ee66d9f973ab3d7084180d6b76525ba,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -532,3 +539,72 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &7378382476325645881
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7344541148890571312, guid: 4a326582a45bce912bd495d75aa85d93,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 7344541148890571312, guid: 4a326582a45bce912bd495d75aa85d93,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7344541148890571312, guid: 4a326582a45bce912bd495d75aa85d93,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7344541148890571312, guid: 4a326582a45bce912bd495d75aa85d93,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7344541148890571312, guid: 4a326582a45bce912bd495d75aa85d93,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7344541148890571312, guid: 4a326582a45bce912bd495d75aa85d93,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7344541148890571312, guid: 4a326582a45bce912bd495d75aa85d93,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7344541148890571312, guid: 4a326582a45bce912bd495d75aa85d93,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7344541148890571312, guid: 4a326582a45bce912bd495d75aa85d93,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7344541148890571312, guid: 4a326582a45bce912bd495d75aa85d93,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7344541148890571312, guid: 4a326582a45bce912bd495d75aa85d93,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7344541148890571316, guid: 4a326582a45bce912bd495d75aa85d93,
+        type: 3}
+      propertyPath: m_Name
+      value: EnemigoLejano
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4a326582a45bce912bd495d75aa85d93, type: 3}

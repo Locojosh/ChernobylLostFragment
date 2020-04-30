@@ -52,7 +52,7 @@ public class EnemigoCercano_Control : MonoBehaviour
     }
 
     private void Atacar()
-    { Debug.Log("Ataque");
+    { 
         PlayAnimacionAtaque();
         sPlayer.RecibirDaño(fuerzaDaño);
     }
