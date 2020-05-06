@@ -9,11 +9,13 @@ public class Bala : MonoBehaviour
     public float tiempoDeVida = 2;
     private float vidaTimer;
     GameObject balaSalida;
+    private Vector3 direccion;
     private void Start() 
     {
         balaSalida = GameObject.Find("BalaPuntoSalida");
         porcentajeDañoArmaScientifica = GameObject.Find("Player").GetComponent<Jugador_Ataque>().porcentajeDañoArmaScientifica;
         vidaTimer = tiempoDeVida;
+        direccion = balaSalida.transform.forward;
     }
     private void Update() 
     {
@@ -22,7 +24,7 @@ public class Bala : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        transform.position += balaSalida.transform.forward * velocidad;
+        transform.position += direccion * velocidad;
     }
     private void OnCollisionEnter(Collision other) 
     {

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Jugador_Ataque : MonoBehaviour
 {
-    //Generales
+    //Generales 
     public string nombreBotonCambiarArma = "", nombreBotonDispararArma = "";
     public string nombreTagEnemigo;
     public int porcentajeDañoBarreta = 25;
@@ -22,7 +22,7 @@ public class Jugador_Ataque : MonoBehaviour
     public GameObject balaPrefab;
     private GameObject balaPuntoSalida;
     public GameObject balas;
-    public int velocidadBala = 50;
+    public int velocidadBala = 100;
     //Explosivo a lanzar
     public GameObject explosivoPrefab; 
     private GameObject explosivoPuntoSalida;
@@ -33,7 +33,7 @@ public class Jugador_Ataque : MonoBehaviour
         //Barreta
         coliderA = transform.Find("Ataque_Collider").gameObject.GetComponent<BoxCollider>();
         //Arma Scientifica
-        balaPuntoSalida = transform.Find("BalaPuntoSalida").gameObject;
+        balaPuntoSalida = GameObject.Find("BalaPuntoSalida").gameObject;
         //Explosivo a lanzar
         explosivoPuntoSalida = transform.Find("ExplosivoPuntoSalida").gameObject;
         balas = GameObject.Find("Balas");
@@ -70,10 +70,18 @@ public class Jugador_Ataque : MonoBehaviour
     }
     private void DispararArmaScientifica()
     {
-        GameObject clon = Instantiate(balaPrefab, balaPuntoSalida.transform.position, Quaternion.identity, balas.transform) as GameObject; //Instancear bala
+        ActualizarBalaPuntoSalida();
+        Vector3 posSalida = new Vector3(transform.position.x + 0.5f, balaPuntoSalida.transform.position.y, transform.position.z + 0.75f);
+        GameObject clon = Instantiate(balaPrefab, posSalida, Quaternion.identity) as GameObject; //Instancear bala
         //Rigidbody balaRB = clon.GetComponent<Rigidbody>();
         //balaRB.AddRelativeForce(0, velocidadBala, 0); //Velocidad de la bala
         
+    }
+    private void ActualizarBalaPuntoSalida()
+    {
+        Vector3 newPos = new Vector3(transform.position.x + 0.5f, balaPuntoSalida.transform.position.y, transform.position.z + 0.75f);
+        balaPuntoSalida.transform.position = newPos;
+        balaPuntoSalida.transform.rotation = transform.rotation;
     }
 
     private void TirarExplosivo()
