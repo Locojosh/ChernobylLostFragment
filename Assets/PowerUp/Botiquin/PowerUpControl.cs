@@ -14,7 +14,8 @@ public class PowerUpControl : MonoBehaviour
     {
         if(other.name == "Player")
         {
-            sPlayer.vida += vida;
+            //sPlayer.vida += vida;
+            sPlayer.RecibirDaño(-vida);
             Destroy(gameObject);
         }    
     }

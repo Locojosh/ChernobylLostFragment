@@ -22,6 +22,10 @@ public class Jugador : MonoBehaviour
     public void RecibirDaño(int daño)
     {
         vida -= daño;
+        if(vida <= 0)
+        {
+            Morir();
+        }
     }
     public void HablarMensaje(string mensaje)
     {

@@ -58,4 +58,8 @@ public class PlayerLook : MonoBehaviour
         eulerRotation.x = value;
         transform.eulerAngles = eulerRotation;
     }
+    public void UnlockCursor()
+    {
+        Cursor.lockState = CursorLockMode.None;
+    }
 }
