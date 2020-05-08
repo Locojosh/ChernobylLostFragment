@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class MenuDeInicio_Control : MonoBehaviour
 {
 #region ATRIBUTOS
+[SerializeField] private string nombreStoryBoardEscena = "Storyboard(Trancisiones)";
 [SerializeField] private string nombreNivel1 = "Nivel_1";
 private GameObject PartidasGuardadas, Ajustes, Salir;
 private bool guardandoPartida = false;
@@ -62,7 +63,8 @@ private Slider sliderSonido, sliderMusica; //En Ajustes
     #region OnClick Botones
     public void OnClick_NuevaPartida()
     {
-        SceneManager.LoadScene(nombreNivel1);
+        //SceneManager.LoadScene(nombreNivel1);
+        SceneManager.LoadScene(nombreStoryBoardEscena);
     }
     public void OnClick_CargarPartida()
     {
