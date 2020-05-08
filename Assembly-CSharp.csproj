@@ -73,6 +73,8 @@
     <Compile Include="Assets\PowerUp\PowerUpControl.cs" />
     <Compile Include="Assets\Puerta&amp;Llave\LlaveControl.cs" />
     <Compile Include="Assets\Puerta&amp;Llave\PuertaControl.cs" />
+    <Compile Include="Assets\SKETCHES(Storyboards)\AnimatedText.cs" />
+    <Compile Include="Assets\SKETCHES(Storyboards)\TextoAnim.cs" />
     <Compile Include="Assets\UI\BaulMateriales.cs" />
     <Compile Include="Assets\UI\GameOver_Control.cs" />
     <Compile Include="Assets\UI\Jugador_Interfaz.cs" />
