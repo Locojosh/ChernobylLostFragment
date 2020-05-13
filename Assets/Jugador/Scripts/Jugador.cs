@@ -7,7 +7,6 @@ public class Jugador : MonoBehaviour
 {
     public GameOver_Control sGameOver; //Arrastrar desde UI
     public int vida = 100;
-    public int Vida { get { return vida; } }
     public string hablar = "Hola";
     public BaulMateriales baulMateriales;
     public Sprite caraActual;
@@ -46,5 +45,9 @@ public class Jugador : MonoBehaviour
     public void Morir()
     {
         sGameOver.GameOver();
+    }
+    public void Load()
+    {
+        //GameSaveLoad.Load()
     }
 }

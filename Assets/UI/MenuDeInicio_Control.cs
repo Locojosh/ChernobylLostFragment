@@ -12,8 +12,8 @@ public class MenuDeInicio_Control : MonoBehaviour
 private GameObject PartidasGuardadas, Ajustes, Salir;
 private bool guardandoPartida = false;
 private GameObject Salir_Seguro; Button Salir_Seguro_Si, Salir_Seguro_No;
-private GameObject Salir_Guardar; Button Salir_Guardar_Si, Salir_Guardar_No;
 private Slider sliderSonido, sliderMusica; //En Ajustes
+public PartidasControl sPartidasControl;
 
 #endregion
 
@@ -28,9 +28,6 @@ private Slider sliderSonido, sliderMusica; //En Ajustes
         Salir_Seguro = GameObject.Find("Seguro");
         Salir_Seguro_Si = Salir_Seguro.transform.Find("Si").gameObject.GetComponent<Button>(); 
         Salir_Seguro_No = Salir_Seguro.transform.Find("No").gameObject.GetComponent<Button>();
-        Salir_Guardar = GameObject.Find("Guardar");
-        Salir_Guardar_Si = Salir_Guardar.transform.Find("Si").gameObject.GetComponent<Button>();
-        Salir_Guardar_No = Salir_Guardar.transform.Find("No").gameObject.GetComponent<Button>();
         //Ajustes
         sliderSonido = Ajustes.transform.Find("Grupo_Ajustes").gameObject.transform.Find("Sonido").gameObject.transform.Find("Slider").gameObject.GetComponent<Slider>();
         sliderMusica = Ajustes.transform.Find("Grupo_Ajustes").gameObject.transform.Find("Musica").gameObject.transform.Find("Slider").gameObject.GetComponent<Slider>();
@@ -39,19 +36,18 @@ private Slider sliderSonido, sliderMusica; //En Ajustes
         PartidasGuardadas.SetActive(false);
         Ajustes.SetActive(false);
         Salir.SetActive(false);  
-            //Salir
-        Salir_Seguro.SetActive(false);
-        Salir_Guardar.SetActive(false);     
+        //Salir
+        Salir_Seguro.SetActive(false);   
         //Habilitar este objeto
         gameObject.SetActive(true);  
+        //Scripts
+        sPartidasControl = transform.parent.Find("Partidas_Guardadas").GetComponent<PartidasControl>();
     }
     private void Start()
     {
         //Botones
         Salir_Seguro_Si.onClick.AddListener(OnClick_Seguro_Si);
-        Salir_Seguro_No.onClick.AddListener(OnClick_Seguro_No);        
-        Salir_Guardar_Si.onClick.AddListener(OnClick_Guardar_Si);
-        Salir_Guardar_No.onClick.AddListener(OnClick_Guardar_No);
+        Salir_Seguro_No.onClick.AddListener(OnClick_Seguro_No);    
         //Sliders de Ajustes
         sliderSonido.onValueChanged.AddListener(delegate {CambioDeValor_SliderSonido(); });
         sliderMusica.onValueChanged.AddListener(delegate {CambioDeValor_SliderMusica(); });
@@ -64,12 +60,14 @@ private Slider sliderSonido, sliderMusica; //En Ajustes
     public void OnClick_NuevaPartida()
     {
         //SceneManager.LoadScene(nombreNivel1);
-        SceneManager.LoadScene(nombreStoryBoardEscena);
+        //SceneManager.LoadScene(nombreStoryBoardEscena);
+        PartidasControl.Instance.NuevaPartida(nombreStoryBoardEscena);
     }
     public void OnClick_CargarPartida()
     {
         Ajustes.SetActive(false);
         EnableCanvas(PartidasGuardadas);
+        sPartidasControl.RecibirNombreNivel(nombreStoryBoardEscena);
     }
     public void OnClick_Ajustes()
     {
@@ -87,23 +85,13 @@ private Slider sliderSonido, sliderMusica; //En Ajustes
     private void OnClick_Seguro_Si()
     {
         Salir_Seguro.SetActive(false);
-        Salir_Guardar.SetActive(true);
+        Application.Quit();
     }
     private void OnClick_Seguro_No()
     {
         Salir_Seguro.SetActive(false);
         Salir.SetActive(false);
-    }
-    private void OnClick_Guardar_Si()
-    {
-        guardandoPartida = true;
-        Salir_Guardar.SetActive(false);
-        PartidasGuardadas.SetActive(true);
-    }
-    private void OnClick_Guardar_No()
-    {
-        Application.Quit();
-    }    
+    }  
     #endregion
     
     private void EnableCanvas(GameObject canvas)

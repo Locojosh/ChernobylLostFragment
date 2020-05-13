@@ -40,7 +40,7 @@ public class Jugador_Interfaz : MonoBehaviour
     private void Update() 
     {
         //Vida
-        iVida.fillAmount = (float)jugador.Vida/100;
+        iVida.fillAmount = (float)jugador.vida/100;
         //Hablar
         iTextos.text = jugador.hablar;
         //Baul

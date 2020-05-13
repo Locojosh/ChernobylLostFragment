@@ -341,6 +341,26 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7116379690277452595, guid: 3f236316d845de2b782e5cbe29211992,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7116379690277452595, guid: 3f236316d845de2b782e5cbe29211992,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7116379690277452595, guid: 3f236316d845de2b782e5cbe29211992,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7116379690277452595, guid: 3f236316d845de2b782e5cbe29211992,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7116379690280587716, guid: 3f236316d845de2b782e5cbe29211992,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -761,6 +781,11 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1259586541082641615, guid: 1e3d0989eaf134b66af8452b621d62a4,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 20.1
+      objectReference: {fileID: 0}
     - target: {fileID: 1316090326086154933, guid: 1e3d0989eaf134b66af8452b621d62a4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1036,6 +1061,11 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4219308367387269004, guid: 1e3d0989eaf134b66af8452b621d62a4,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 20.1
+      objectReference: {fileID: 0}
     - target: {fileID: 4337722123546688948, guid: 1e3d0989eaf134b66af8452b621d62a4,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -1200,6 +1230,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7323175434955140906, guid: 1e3d0989eaf134b66af8452b621d62a4,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 23.8
       objectReference: {fileID: 0}
     - target: {fileID: 8269174189468834146, guid: 1e3d0989eaf134b66af8452b621d62a4,
         type: 3}
