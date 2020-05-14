@@ -318,7 +318,6 @@ GameObject:
   m_Component:
   - component: {fileID: 524158405}
   - component: {fileID: 524158404}
-  - component: {fileID: 524158403}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -326,14 +325,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &524158403
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 524158402}
-  m_Enabled: 1
 --- !u!20 &524158404
 Camera:
   m_ObjectHideFlags: 0
@@ -748,7 +739,7 @@ PrefabInstance:
     - target: {fileID: 458423409083748896, guid: 13e478f7138e0794c84104f5305d0700,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.995
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 458423409083748896, guid: 13e478f7138e0794c84104f5305d0700,
         type: 3}
@@ -800,10 +791,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 832469903152292247, guid: 13e478f7138e0794c84104f5305d0700,
+    - target: {fileID: 458423409083748899, guid: 13e478f7138e0794c84104f5305d0700,
         type: 3}
-      propertyPath: velocidadBala
-      value: 100
+      propertyPath: m_Height
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13e478f7138e0794c84104f5305d0700, type: 3}

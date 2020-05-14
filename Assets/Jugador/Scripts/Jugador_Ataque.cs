@@ -11,13 +11,14 @@ public class Jugador_Ataque : MonoBehaviour
     public int porcentajeDañoBarreta = 25;
     public int porcentajeDañoArmaScientifica = 15;
     public int porcentajeDañoExplosivo = 50;
-    private int armaActual = 0; // 1=Barreta || 2=ArmaScientifica || 3=Explosivo
+    public int armaActual = 0; // 1=Barreta || 2=ArmaScientifica || 3=Explosivo
     
     //Especificas a Armas Especificas
     //Barreta
     public Animator animator;
     private BoxCollider coliderA;
     public string nombreAnimacionBarreta = "barreta"; //Nombre de la animacion de la barreta atacando
+    public string nombreAnimacionExplosivo = "explosivo";
     //Arma scientifica
     public GameObject balaPrefab;
     private GameObject balaPuntoSalida;
@@ -48,15 +49,15 @@ public class Jugador_Ataque : MonoBehaviour
         }
         
         if(Input.GetButtonDown(nombreBotonDispararArma))
-        {DispararArmaScientifica();
-            /*if(armaActual == 2)
+        {//DispararArmaScientifica();
+            if(armaActual == 2)
             {
                 DispararArmaScientifica();
             }
             else if(armaActual == 3)
             {
                 TirarExplosivo();
-            }*/
+            }
         }
     }
     private void OnTriggerStay(Collider other) //Cuando el collider de ataque del jugador choca con otro GameObject
@@ -90,9 +91,15 @@ public class Jugador_Ataque : MonoBehaviour
         Rigidbody explosivoRB = clon.GetComponent<Rigidbody>();
         //Vector3 dirExplosivo = new Vector3(0, 0.5f, 1); //Direccion que el explosivo es lanzado
         explosivoRB.velocity = transform.rotation.eulerAngles * velocidadExplosivo; //Velocidad del explosivo
+        //Animacion
+        PlayAnimacionExplosivo();
     }
     private void PlayAnimacionBarreta()
     {
         animator.SetTrigger(nombreAnimacionBarreta);     //La animacion de ataque de barreta  del jugador 
-    }                                              
+    }    
+    private void PlayAnimacionExplosivo()
+    {
+        animator.SetTrigger(nombreAnimacionExplosivo);     //La animacion de ataque de barreta  del jugador 
+    }                                          
 }
