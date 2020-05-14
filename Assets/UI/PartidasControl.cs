@@ -22,20 +22,22 @@ public class PartidasControl : MonoBehaviour
     public int maxNPartidas = 7; //maximo numero de partidas
     private static int nPartida; //numero de la partida
     public int NPartida { get { return nPartida;} }
+    private int nBorrar;
     private string nombreNivel1;
     //UI
-    private GameObject PartidasGuardadas, PanelMensaje;
-    public Button[] btnPartidas;
+    private GameObject PartidasGuardadas, PanelMensaje, PanelBorrar;
+    public GameObject[] Partidas; //Asignar desde editor
     private void Awake() 
     {
         instance = this;
         PartidasGuardadas = transform.Find("GrupoPartidas").gameObject;
         PanelMensaje =  transform.Find("PanelMensaje").gameObject;
-        btnPartidas = PartidasGuardadas.GetComponentsInChildren<Button>();
+        PanelBorrar = transform.Find("PanelBorrar").gameObject;
     }
     private void Start() 
     {        
         PanelMensaje.SetActive(false);
+        PanelBorrar.SetActive(false);
         ActualizarTextoPartidas();
     }
 
@@ -45,7 +47,7 @@ public class PartidasControl : MonoBehaviour
         if(nuevoN < maxNPartidas)
         {
             nPartida = nuevoN;
-            btnPartidas[nPartida].gameObject.SetActive(true);
+            Partidas[nPartida].GetComponentInChildren<TextMeshProUGUI>().text = "Usado";
             SceneManager.LoadScene(nombreNivel1);
         }
         else
@@ -78,7 +80,25 @@ public class PartidasControl : MonoBehaviour
             SceneManager.LoadScene(nombreNivel1);
         }
     }
-
+    public void OnClick_BorrarPartida(int n)
+    {
+        PanelBorrar.SetActive(true);
+        nBorrar = n;
+    }
+    public void OnClick_Si_BorrarPartida()
+    {
+        string path = Application.persistentDataPath + "/juego" + nBorrar + ".chernobyl";
+        if(File.Exists(path))
+        {
+            File.Delete(path);
+            Partidas[nBorrar].GetComponentInChildren<TextMeshProUGUI>().text = "Vacio";
+        }
+        PanelBorrar.SetActive(false);
+    }
+    public void OnClick_No_BorrarPartida()
+    {
+        PanelBorrar.SetActive(false);
+    }
     private int BuscarPartidaVacia()
     {        
         for(int n = 0; n < maxNPartidas; n++)
@@ -95,9 +115,9 @@ public class PartidasControl : MonoBehaviour
         {
             string path = Application.persistentDataPath + "/juego" + n + ".chernobyl";
             if(File.Exists(path))
-                btnPartidas[n].gameObject.SetActive(true);
+                Partidas[n].GetComponentInChildren<TextMeshProUGUI>().text = "Usado";
             else
-                btnPartidas[n].gameObject.SetActive(false);
+                Partidas[n].GetComponentInChildren<TextMeshProUGUI>().text = "Vacio";
         }
     }
 }
