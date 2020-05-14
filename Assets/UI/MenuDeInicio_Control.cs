@@ -13,7 +13,6 @@ private GameObject PartidasGuardadas, Ajustes, Salir;
 private bool guardandoPartida = false;
 private GameObject Salir_Seguro; Button Salir_Seguro_Si, Salir_Seguro_No;
 private Slider sliderSonido, sliderMusica; //En Ajustes
-public PartidasControl sPartidasControl;
 
 #endregion
 
@@ -40,8 +39,6 @@ public PartidasControl sPartidasControl;
         Salir_Seguro.SetActive(false);   
         //Habilitar este objeto
         gameObject.SetActive(true);  
-        //Scripts
-        sPartidasControl = transform.parent.Find("Partidas_Guardadas").GetComponent<PartidasControl>();
     }
     private void Start()
     {
@@ -61,13 +58,13 @@ public PartidasControl sPartidasControl;
     {
         //SceneManager.LoadScene(nombreNivel1);
         //SceneManager.LoadScene(nombreStoryBoardEscena);
-        PartidasControl.Instance.NuevaPartida(nombreStoryBoardEscena);
+        PartidasControl.Instance.NuevaPartida(nombreNivel1);
     }
     public void OnClick_CargarPartida()
     {
         Ajustes.SetActive(false);
         EnableCanvas(PartidasGuardadas);
-        sPartidasControl.RecibirNombreNivel(nombreStoryBoardEscena);
+        PartidasControl.Instance.RecibirNombreNivel(nombreNivel1);
     }
     public void OnClick_Ajustes()
     {

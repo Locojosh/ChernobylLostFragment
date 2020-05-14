@@ -705,6 +705,11 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6009070973629035680, guid: 8a6c385bfb3aa9cacb83167e1c751897,
+        type: 3}
+      propertyPath: nombreNivel1
+      value: Pruebas_JugadorAtaque
+      objectReference: {fileID: 0}
     - target: {fileID: 6370644395612118684, guid: 8a6c385bfb3aa9cacb83167e1c751897,
         type: 3}
       propertyPath: m_AnchorMin.y

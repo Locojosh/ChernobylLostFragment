@@ -14,7 +14,7 @@ public class GameData
         baulObjetos = player.baulMateriales.listaObjetos;
         playerPos = new float[3];
         playerPos[0] = player.transform.position.x;
-        playerPos[1] = player.transform.position.y;
+        playerPos[1] = player.transform.position.y + 1f;
         playerPos[2] = player.transform.position.z;
     }
 }

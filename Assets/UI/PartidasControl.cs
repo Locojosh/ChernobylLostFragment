@@ -21,6 +21,7 @@ public class PartidasControl : MonoBehaviour
     }
     public int maxNPartidas = 7; //maximo numero de partidas
     private static int nPartida; //numero de la partida
+    public int NPartida { get { return nPartida;} }
     private string nombreNivel1;
     //UI
     private GameObject PartidasGuardadas, PanelMensaje;
