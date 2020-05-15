@@ -52,14 +52,15 @@ public class Jugador_Ataque : MonoBehaviour
         {//DispararArmaScientifica();
             if(armaActual == 2)
             {
-                DispararArmaScientifica();
+                DispararArma(2);
             }
             else if(armaActual == 3)
             {
-                TirarExplosivo();
+                DispararArma(3);
             }
         }
     }
+    //ATAQUE BARRETA
     private void OnTriggerStay(Collider other) //Cuando el collider de ataque del jugador choca con otro GameObject
     {
         if(other.tag == nombreTagEnemigo)              //El GameObject es un enemigo
@@ -69,30 +70,26 @@ public class Jugador_Ataque : MonoBehaviour
             PlayAnimacionBarreta();
         }         
     }
-    private void DispararArmaScientifica()
+    private void DispararArma(int arma)
     {
         ActualizarBalaPuntoSalida();
         Vector3 posSalida = new Vector3(transform.position.x + 0.5f, balaPuntoSalida.transform.position.y, transform.position.z + 0.75f);
-        GameObject clon = Instantiate(balaPrefab, posSalida, Quaternion.identity) as GameObject; //Instancear bala
-        //Rigidbody balaRB = clon.GetComponent<Rigidbody>();
-        //balaRB.AddRelativeForce(0, velocidadBala, 0); //Velocidad de la bala
-        
+        switch (arma)
+        {
+            case 2: //ARMA SCIENTIFICA
+            GameObject clon = Instantiate(balaPrefab, posSalida, Quaternion.identity) as GameObject; //Instancear bala
+            break;
+            case 3: //ARMA QUIMICA
+            //
+            PlayAnimacionExplosivo();
+            break;
+        }        
     }
     private void ActualizarBalaPuntoSalida()
     {
         Vector3 newPos = new Vector3(transform.position.x + 0.5f, balaPuntoSalida.transform.position.y, transform.position.z + 0.75f);
         balaPuntoSalida.transform.position = newPos;
         balaPuntoSalida.transform.rotation = transform.rotation;
-    }
-
-    private void TirarExplosivo()
-    {
-        GameObject clon = Instantiate<GameObject>(explosivoPrefab, explosivoPuntoSalida.transform.position, explosivoPuntoSalida.transform.rotation, explosivoPuntoSalida.transform); //Instancear explosivo a lanzar
-        Rigidbody explosivoRB = clon.GetComponent<Rigidbody>();
-        //Vector3 dirExplosivo = new Vector3(0, 0.5f, 1); //Direccion que el explosivo es lanzado
-        explosivoRB.velocity = transform.rotation.eulerAngles * velocidadExplosivo; //Velocidad del explosivo
-        //Animacion
-        PlayAnimacionExplosivo();
     }
     private void PlayAnimacionBarreta()
     {

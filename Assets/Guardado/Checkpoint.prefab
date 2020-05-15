@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 471569501244182443}
   - component: {fileID: 471569501244182420}
   m_Layer: 0
-  m_Name: Guardador
+  m_Name: Checkpoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
