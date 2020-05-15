@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemigoCercano_Control : MonoBehaviour
 {
+    public SonidosBiblioteca sSonidos;
     [SerializeField] float velocidad = 10f;
     [SerializeField] int fuerzaDaño = 15;
     [SerializeField] float distanciaPerseguir = 10f, distanciaMin = 2f;
@@ -52,6 +53,7 @@ public class EnemigoCercano_Control : MonoBehaviour
     private void Atacar()
     { 
         PlayAnimacionAtaque();
+        sSonidos.Play(player.gameObject.GetComponent<AudioSource>(), sSonidos.Lobo);
         sPlayer.RecibirDaño(fuerzaDaño);
     }
     private void PlayAnimacionAtaque()

@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class Explosivo : MonoBehaviour
 {
+    public float velocidad = 0.1f;
     private int porcentajeDañoExplosivo;
     private ParticleSystem explosion;
     public float tiempoDeVida = 8;
     private float vidaTimer;
+    GameObject balaSalida;
+    private Vector3 direccion;
 
     private void Start() 
     {
         porcentajeDañoExplosivo = GameObject.Find("Player").GetComponent<Jugador_Ataque>().porcentajeDañoExplosivo;
         vidaTimer = tiempoDeVida;
+        balaSalida = GameObject.Find("BalaPuntoSalida");
+        direccion = balaSalida.transform.forward;
     }
     private void Update() 
     {
@@ -21,6 +26,7 @@ public class Explosivo : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        transform.position += direccion * velocidad;
     }
 
     private void OnCollisionEnter(Collision other) 

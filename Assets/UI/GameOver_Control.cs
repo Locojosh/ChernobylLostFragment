@@ -11,19 +11,17 @@ public class GameOver_Control : MonoBehaviour
     public GameObject InterfazPartida;
     private int menuOSalir; //1>>Menu 2>>Salir
     public string nombreSceneMenu;
-    private GameObject GuardarCambios, PartidasGuardadas;
+    private GameObject GuardarCambios;
     private void Awake() 
     {
         BotonesInferior = transform.Find("Botones").gameObject;
         GuardarCambios = transform.Find("GuardarCambios").gameObject;
-        PartidasGuardadas = transform.Find("Partidas_Guardadas").gameObject;  
         sJugadorLook = Jugador.transform.Find("PlayerCamera").GetComponent<PlayerLook>(); 
     }
     private void Start() 
     {
         gameObject.SetActive(false);
         GuardarCambios.SetActive(false);
-        PartidasGuardadas.SetActive(false);
     }
     public void GameOver()
     {
@@ -45,8 +43,18 @@ public class GameOver_Control : MonoBehaviour
     }
     public void OnClick_SiGuardarCambios()
     {
-        PartidasGuardadas.SetActive(true);
         BotonesInferior.SetActive(false);
+        int n = PartidasControl.Instance.NPartida;
+        GameSaveLoad.Save(n, Jugador.GetComponent<Jugador>());
+        switch (menuOSalir)
+        {
+            case 1: 
+            SceneManager.LoadScene(nombreSceneMenu);
+            break;
+            case 2:
+            Application.Quit();
+            break;
+        }
     }
     public void OnClick_NoGuardarCambios()
     {

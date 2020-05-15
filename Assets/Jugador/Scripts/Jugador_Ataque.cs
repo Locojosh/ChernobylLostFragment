@@ -20,15 +20,12 @@ public class Jugador_Ataque : MonoBehaviour
     private BoxCollider coliderA;
     public string nombreAnimacionBarreta = "barreta"; //Nombre de la animacion de la barreta atacando
     public string nombreAnimacionExplosivo = "explosivo";
+    //Armas
+    private GameObject balaPuntoSalida;
     //Arma scientifica
     public GameObject balaPrefab;
-    private GameObject balaPuntoSalida;
-    public GameObject balas;
-    public int velocidadBala = 100;
     //Explosivo a lanzar
     public GameObject explosivoPrefab; 
-    private GameObject explosivoPuntoSalida;
-    public int velocidadExplosivo = 10;
 
     private void Awake() 
     {
@@ -36,9 +33,6 @@ public class Jugador_Ataque : MonoBehaviour
         coliderA = transform.Find("Ataque_Collider").gameObject.GetComponent<BoxCollider>();
         //Arma Scientifica
         balaPuntoSalida = GameObject.Find("BalaPuntoSalida").gameObject;
-        //Explosivo a lanzar
-        explosivoPuntoSalida = transform.Find("ExplosivoPuntoSalida").gameObject;
-        balas = GameObject.Find("Balas");
     }
     private void Update() 
     {
@@ -74,24 +68,26 @@ public class Jugador_Ataque : MonoBehaviour
     private void DispararArma(int arma)
     {
         ActualizarBalaPuntoSalida();
-        Vector3 posSalida = new Vector3(transform.position.x + 0.5f, balaPuntoSalida.transform.position.y, transform.position.z + 0.75f);
         switch (arma)
         {
             case 2: //ARMA SCIENTIFICA
-            GameObject clon = Instantiate(balaPrefab, posSalida, Quaternion.identity) as GameObject; //Instancear bala
+            GameObject clon = Instantiate(balaPrefab, balaPuntoSalida.transform) as GameObject; //Instancear bala
             sSonidos.Play(gameObject.GetComponent<AudioSource>(), sSonidos.Disparo);
             break;
             case 3: //ARMA QUIMICA
-            //
+            GameObject clonQ = Instantiate(explosivoPrefab, balaPuntoSalida.transform) as GameObject; //Instancear bala
+            sSonidos.Play(gameObject.GetComponent<AudioSource>(), sSonidos.Explosion);
             PlayAnimacionExplosivo();
             break;
         }        
     }
     private void ActualizarBalaPuntoSalida()
     {
-        Vector3 newPos = new Vector3(transform.position.x + 0.5f, balaPuntoSalida.transform.position.y, transform.position.z + 0.75f);
-        balaPuntoSalida.transform.position = newPos;
         balaPuntoSalida.transform.rotation = transform.rotation;
+
+        balaPuntoSalida.transform.position = transform.position;
+        balaPuntoSalida.transform.position += transform.forward;        
+        //balaPuntoSalida.transform.position += new Vector3(0.5f, 0f, 1.5f);
     }
     private void PlayAnimacionBarreta()
     {

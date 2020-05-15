@@ -43,12 +43,12 @@ public class AnimatedText : MonoBehaviour
         if(lineaActual == message.Length-1 && checkNext && Input.GetKeyDown(KeyCode.Return))
         {
             //SceneManager.LoadScene(nombreNivel1);
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
         }
         //Saltar **No incluir esto en version final
         if(Input.GetKeyDown(KeyCode.K))
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
         }
     }
 
