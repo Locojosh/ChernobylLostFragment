@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class AnimatedText : MonoBehaviour
 {
+    public string nombreNivel1;
 	public float letterPaused = 0.025f;
 	public string[] message;
 	public Text textComp;
@@ -37,6 +39,16 @@ public class AnimatedText : MonoBehaviour
             textComp.text = "";
 
             StartCoroutine(TypeText(lineaActual));
+        }
+        if(lineaActual == message.Length-1 && checkNext && Input.GetKeyDown(KeyCode.Return))
+        {
+            //SceneManager.LoadScene(nombreNivel1);
+            SceneManager.LoadScene(0);
+        }
+        //Saltar **No incluir esto en version final
+        if(Input.GetKeyDown(KeyCode.K))
+        {
+            SceneManager.LoadScene(0);
         }
     }
 

@@ -58,13 +58,13 @@ private Slider sliderSonido, sliderMusica; //En Ajustes
     {
         //SceneManager.LoadScene(nombreNivel1);
         //SceneManager.LoadScene(nombreStoryBoardEscena);
-        PartidasControl.Instance.NuevaPartida(nombreNivel1);
+        PartidasControl.Instance.NuevaPartida(nombreStoryBoardEscena);
     }
     public void OnClick_CargarPartida()
     {
         Ajustes.SetActive(false);
         EnableCanvas(PartidasGuardadas);
-        PartidasControl.Instance.RecibirNombreNivel(nombreNivel1);
+        PartidasControl.Instance.RecibirNombreNivel(nombreStoryBoardEscena);
     }
     public void OnClick_Ajustes()
     {

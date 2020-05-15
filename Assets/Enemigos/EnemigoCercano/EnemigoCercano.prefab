@@ -94,7 +94,7 @@ MonoBehaviour:
   velocidad: 3
   "fuerzaDa\xF1o": 15
   distanciaPerseguir: 7
-  distanciaAtacando: 1.1
+  distanciaAtacando: 2
   frecuenciaAtaque: 1
   nombreTriggerAnimacionAtaque: 
 --- !u!1 &5744601517740820228

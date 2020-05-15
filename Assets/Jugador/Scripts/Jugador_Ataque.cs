@@ -12,6 +12,7 @@ public class Jugador_Ataque : MonoBehaviour
     public int porcentajeDañoArmaScientifica = 15;
     public int porcentajeDañoExplosivo = 50;
     public int armaActual = 0; // 1=Barreta || 2=ArmaScientifica || 3=Explosivo
+    public SonidosBiblioteca sSonidos;
     
     //Especificas a Armas Especificas
     //Barreta
@@ -78,6 +79,7 @@ public class Jugador_Ataque : MonoBehaviour
         {
             case 2: //ARMA SCIENTIFICA
             GameObject clon = Instantiate(balaPrefab, posSalida, Quaternion.identity) as GameObject; //Instancear bala
+            sSonidos.Play(gameObject.GetComponent<AudioSource>(), sSonidos.Disparo);
             break;
             case 3: //ARMA QUIMICA
             //

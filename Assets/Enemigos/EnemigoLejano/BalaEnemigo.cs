@@ -25,7 +25,7 @@ public class BalaEnemigo : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other) 
     {
-        if(other.gameObject.name == "Player")
+        if(other.gameObject.CompareTag("Player"))
         {
             other.gameObject.GetComponent<Jugador>().RecibirDaño(daño);
             Destroy(gameObject);
