@@ -14,28 +14,28 @@ public class Jugador_Ataque : MonoBehaviour
     public int armaActual = 0; // 1=Barreta || 2=ArmaScientifica || 3=Explosivo
     public SonidosBiblioteca sSonidos;
     
-    //Especificas a Armas Especificas
     //Barreta
     public Animator animator;
     private BoxCollider coliderA;
     public string nombreAnimacionBarreta = "barreta"; //Nombre de la animacion de la barreta atacando
     public string nombreAnimacionExplosivo = "explosivo";
     //Armas
-    private GameObject balaPuntoSalida;
+    public Transform balaPuntoSalida;
     //Arma scientifica
     public GameObject balaPrefab;
     //Explosivo a lanzar
-    public GameObject explosivoPrefab; 
+    public GameObject explosivoPrefab;
+    public int balas = 20, explosivos = 5; //cuantas municiones tiene
 
     private void Awake() 
     {
         //Barreta
         coliderA = transform.Find("Ataque_Collider").gameObject.GetComponent<BoxCollider>();
         //Arma Scientifica
-        balaPuntoSalida = GameObject.Find("BalaPuntoSalida").gameObject;
+        balaPuntoSalida = GameObject.Find("BalaPuntoSalida").gameObject.transform;
     }
     private void Update() 
-    {
+    {           
         if(Input.GetButtonDown(nombreBotonCambiarArma))
         {
             armaActual++;
@@ -47,10 +47,12 @@ public class Jugador_Ataque : MonoBehaviour
         {//DispararArmaScientifica();
             if(armaActual == 2)
             {
+                if(balas > 0)
                 DispararArma(2);
             }
             else if(armaActual == 3)
             {
+                if(explosivos > 0) //Probar que tenga municiones
                 DispararArma(3);
             }
         }
@@ -71,23 +73,24 @@ public class Jugador_Ataque : MonoBehaviour
         switch (arma)
         {
             case 2: //ARMA SCIENTIFICA
-            GameObject clon = Instantiate(balaPrefab, balaPuntoSalida.transform) as GameObject; //Instancear bala
+            GameObject clon = Instantiate<GameObject>(balaPrefab, balaPuntoSalida.position, balaPuntoSalida.rotation, balaPuntoSalida); //Instancear bala
             sSonidos.Play(gameObject.GetComponent<AudioSource>(), sSonidos.Disparo);
+            balas--;
             break;
             case 3: //ARMA QUIMICA
-            GameObject clonQ = Instantiate(explosivoPrefab, balaPuntoSalida.transform) as GameObject; //Instancear bala
+            GameObject clonQ = Instantiate<GameObject>(explosivoPrefab, balaPuntoSalida.position, balaPuntoSalida.rotation, balaPuntoSalida); //Instancear bala
             sSonidos.Play(gameObject.GetComponent<AudioSource>(), sSonidos.Explosion);
             PlayAnimacionExplosivo();
+            explosivos--;
             break;
         }        
     }
     private void ActualizarBalaPuntoSalida()
     {
-        balaPuntoSalida.transform.rotation = transform.rotation;
-
-        balaPuntoSalida.transform.position = transform.position;
-        balaPuntoSalida.transform.position += transform.forward;        
-        //balaPuntoSalida.transform.position += new Vector3(0.5f, 0f, 1.5f);
+        Vector3 newPos = new Vector3(transform.position.x, 0.5f, transform.position.z);
+        balaPuntoSalida.SetPositionAndRotation(newPos, transform.rotation);
+        balaPuntoSalida.transform.position += transform.forward * 1.5f;   
+        balaPuntoSalida.transform.position += transform.right * 0.5f; 
     }
     private void PlayAnimacionBarreta()
     {

@@ -17,7 +17,7 @@ public class Explosivo : MonoBehaviour
         porcentajeDañoExplosivo = GameObject.Find("Player").GetComponent<Jugador_Ataque>().porcentajeDañoExplosivo;
         vidaTimer = tiempoDeVida;
         balaSalida = GameObject.Find("BalaPuntoSalida");
-        direccion = balaSalida.transform.forward;
+        direccion = transform.forward;
     }
     private void Update() 
     {
