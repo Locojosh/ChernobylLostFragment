@@ -154,7 +154,7 @@ CharacterController:
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
+  m_MinMoveDistance: 0.1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &458423409083748898
 MonoBehaviour:
@@ -173,11 +173,29 @@ MonoBehaviour:
   movementSpeed: 5
   jumpFallOff:
     serializedVersion: 2
-    m_Curve: []
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  jumpMultiplier: 10
+  jumpMultiplier: 3
   jumpKey: 32
 --- !u!114 &832469903152292247
 MonoBehaviour:
@@ -199,13 +217,18 @@ MonoBehaviour:
   "porcentajeDa\xF1oExplosivo": 50
   armaActual: 0
   sSonidos: {fileID: 11400000, guid: 013bca0e470c0b77ea1cce8100b01e9d, type: 2}
+  intIddle: iddleActual
+  trigBarreta: barreta
+  trigDisparo: disparo
+  trigExplosivo: barreta
   animator: {fileID: 1172528270}
-  nombreAnimacionBarreta: barreta
-  nombreAnimacionExplosivo: explosivo
+  balaPuntoSalida: {fileID: 0}
   balaPrefab: {fileID: 8979993839999042336, guid: 9553bab07176b113ab8a9365d812130f,
     type: 3}
   explosivoPrefab: {fileID: 1663637727245423498, guid: 6dc0cfb66d8cca7f38d3f5477ddf8b4d,
     type: 3}
+  balas: 20
+  explosivos: 5
 --- !u!114 &252751548863594068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -463,7 +486,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.505, z: 1.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 3363304097377835603}
   m_Father: {fileID: 458423409083748896}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -480,3 +504,33 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &8407611090206329935
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3363304097377835603}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3363304097377835603
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8407611090206329935}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3680759083779086994}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

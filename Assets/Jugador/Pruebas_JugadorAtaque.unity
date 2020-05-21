@@ -613,56 +613,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 458423409083748898, guid: 13e478f7138e0794c84104f5305d0700,
-        type: 3}
-      propertyPath: jumpFallOff.m_Curve.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 458423409083748898, guid: 13e478f7138e0794c84104f5305d0700,
-        type: 3}
-      propertyPath: jumpMultiplier
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 458423409083748898, guid: 13e478f7138e0794c84104f5305d0700,
-        type: 3}
-      propertyPath: jumpFallOff.m_Curve.Array.data[0].value
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 458423409083748898, guid: 13e478f7138e0794c84104f5305d0700,
-        type: 3}
-      propertyPath: jumpFallOff.m_Curve.Array.data[0].tangentMode
-      value: 34
-      objectReference: {fileID: 0}
-    - target: {fileID: 458423409083748898, guid: 13e478f7138e0794c84104f5305d0700,
-        type: 3}
-      propertyPath: jumpFallOff.m_Curve.Array.data[1].time
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 458423409083748898, guid: 13e478f7138e0794c84104f5305d0700,
-        type: 3}
-      propertyPath: jumpFallOff.m_Curve.Array.data[1].value
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 458423409083748898, guid: 13e478f7138e0794c84104f5305d0700,
-        type: 3}
-      propertyPath: jumpFallOff.m_Curve.Array.data[1].tangentMode
-      value: 34
-      objectReference: {fileID: 0}
-    - target: {fileID: 458423409083748899, guid: 13e478f7138e0794c84104f5305d0700,
-        type: 3}
-      propertyPath: m_Height
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 458423409083748899, guid: 13e478f7138e0794c84104f5305d0700,
-        type: 3}
-      propertyPath: m_MinMoveDistance
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 832469903152292247, guid: 13e478f7138e0794c84104f5305d0700,
-        type: 3}
-      propertyPath: prueba
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13e478f7138e0794c84104f5305d0700, type: 3}
 --- !u!1001 &1796187964

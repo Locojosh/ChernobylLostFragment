@@ -11,14 +11,13 @@ public class Jugador_Ataque : MonoBehaviour
     public int porcentajeDañoBarreta = 25;
     public int porcentajeDañoArmaScientifica = 15;
     public int porcentajeDañoExplosivo = 50;
-    public int armaActual = 0; // 1=Barreta || 2=ArmaScientifica || 3=Explosivo
+    public int armaActual = 1; // 1=Barreta || 2=ArmaScientifica || 3=Explosivo
     public SonidosBiblioteca sSonidos;
-    
+    //Animator
+    public string intIddle = "iddleActual", trigBarreta = "barreta", trigDisparo = "disparo", trigExplosivo = "explosivo";
     //Barreta
     public Animator animator;
     private BoxCollider coliderA;
-    public string nombreAnimacionBarreta = "barreta"; //Nombre de la animacion de la barreta atacando
-    public string nombreAnimacionExplosivo = "explosivo";
     //Armas
     public Transform balaPuntoSalida;
     //Arma scientifica
@@ -39,21 +38,38 @@ public class Jugador_Ataque : MonoBehaviour
         if(Input.GetButtonDown(nombreBotonCambiarArma))
         {
             armaActual++;
-            if(armaActual==4)
+            if(armaActual>=4)
             armaActual = 1;
+
+            switch (armaActual)
+            {
+                case 1: //Barreta
+                animator.SetInteger(intIddle, 1);
+                break;
+                case 2: //Arma Scientifica
+                animator.SetInteger(intIddle, 2);
+                break;
+                case 3: //Arma Quimica
+                animator.SetInteger(intIddle, 3);
+                break;
+            }
         }
         
         if(Input.GetButtonDown(nombreBotonDispararArma))
-        {//DispararArmaScientifica();
-            if(armaActual == 2)
+        {
+            switch (armaActual)
             {
+                case 1: //barreta
+                animator.SetTrigger(trigBarreta);     //La animacion de ataque de barreta  del jugador 
+                break;
+                case 2:
                 if(balas > 0)
                 DispararArma(2);
-            }
-            else if(armaActual == 3)
-            {
+                break;
+                case 3:
                 if(explosivos > 0) //Probar que tenga municiones
                 DispararArma(3);
+                break;
             }
         }
     }
@@ -64,7 +80,6 @@ public class Jugador_Ataque : MonoBehaviour
         if(Input.GetButtonDown(nombreBotonDispararArma) && armaActual==1)         //USAR BARRETA
         {
             other.gameObject.GetComponent<Enemigo_Control>().QuitarVida(porcentajeDañoBarreta);
-            PlayAnimacionBarreta();
         }         
     }
     private void DispararArma(int arma)
@@ -73,14 +88,15 @@ public class Jugador_Ataque : MonoBehaviour
         switch (arma)
         {
             case 2: //ARMA SCIENTIFICA
+            animator.SetTrigger(trigDisparo);
             GameObject clon = Instantiate<GameObject>(balaPrefab, balaPuntoSalida.position, balaPuntoSalida.rotation, balaPuntoSalida); //Instancear bala
             sSonidos.Play(gameObject.GetComponent<AudioSource>(), sSonidos.Disparo);
             balas--;
             break;
             case 3: //ARMA QUIMICA
+            animator.SetTrigger(trigExplosivo);
             GameObject clonQ = Instantiate<GameObject>(explosivoPrefab, balaPuntoSalida.position, balaPuntoSalida.rotation, balaPuntoSalida); //Instancear bala
             sSonidos.Play(gameObject.GetComponent<AudioSource>(), sSonidos.Explosion);
-            PlayAnimacionExplosivo();
             explosivos--;
             break;
         }        
@@ -92,12 +108,5 @@ public class Jugador_Ataque : MonoBehaviour
         balaPuntoSalida.transform.position += transform.forward * 1.5f;   
         balaPuntoSalida.transform.position += transform.right * 0.5f; 
     }
-    private void PlayAnimacionBarreta()
-    {
-        animator.SetTrigger(nombreAnimacionBarreta);     //La animacion de ataque de barreta  del jugador 
-    }    
-    private void PlayAnimacionExplosivo()
-    {
-        animator.SetTrigger(nombreAnimacionExplosivo);     //La animacion de ataque de barreta  del jugador 
-    }                                          
+                                     
 }
