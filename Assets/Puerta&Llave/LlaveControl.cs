@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LlaveControl : MonoBehaviour
 {
+    public SonidosBiblioteca sSonidos;
     public string color;
     public BaulMateriales baul;
     private void OnTriggerEnter(Collider other) 
@@ -11,6 +12,7 @@ public class LlaveControl : MonoBehaviour
         if(other.name == "Player")
         {
             baul.RecogerObjeto("Llave" + color);
+            sSonidos.Play(gameObject.GetComponent<AudioSource>(), sSonidos.Interaccion);
             Destroy(gameObject);
         }    
     }

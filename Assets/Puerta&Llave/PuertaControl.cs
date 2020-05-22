@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PuertaControl : MonoBehaviour
 {
+    public SonidosBiblioteca sSonidos;
     public string color;
     public BaulMateriales baul;
     public Transform ejeDeGiro;
@@ -12,8 +13,10 @@ public class PuertaControl : MonoBehaviour
         if(other.name == "Player")
         {
             if(baul.RevisarSiHayObjeto("Llave" + color))
-            transform.RotateAround(ejeDeGiro.position, Vector3.up, -90);
-            //Debug.Log("Abriendo puerta");
+            {
+                transform.RotateAround(ejeDeGiro.position, Vector3.up, -90);
+                sSonidos.Play(gameObject.GetComponent<AudioSource>(), sSonidos.Interaccion);
+            }
             else
             Debug.Log("No tienes llave");
         }    

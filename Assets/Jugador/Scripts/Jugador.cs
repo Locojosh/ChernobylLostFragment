@@ -8,6 +8,7 @@ public class Jugador : MonoBehaviour
     public GameOver_Control sGameOver; //Arrastrar desde UI
     public int vida = 100;
     public string hablar = "Hola";
+    public string mensajeDefault = "Tengo que salir de Chernobyl...";
     public BaulMateriales baulMateriales;
     public Sprite caraActual;
     public Sprite[] listaCarasUI; 
@@ -17,6 +18,10 @@ public class Jugador : MonoBehaviour
     private void Awake() 
     {
         baulMateriales = GameObject.Find("Baul_Materiales").GetComponent<BaulMateriales>();
+    }
+    private void Start() 
+    {
+        Load();
     }
     public void RecibirDaño(int daño)
     {
@@ -29,6 +34,11 @@ public class Jugador : MonoBehaviour
     public void HablarMensaje(string mensaje)
     {
         hablar = mensaje;
+        Invoke("HablarDefault", 3);
+    }
+    private void HablarDefault()
+    {
+        hablar = mensajeDefault;
     }
     public void AgregarObjetoAlBaul(string objeto)
     {
@@ -48,6 +58,14 @@ public class Jugador : MonoBehaviour
     }
     public void Load()
     {
-        //GameSaveLoad.Load()
+        GameData data = GameSaveLoad.Load(PartidasControl.Instance.NPartida);
+
+        vida = data.vida;
+        baulMateriales.listaObjetos = data.baulObjetos;
+        Vector3 pos = new Vector3();
+        pos.x = data.playerPos[0];
+        pos.y = data.playerPos[1];
+        pos.z = data.playerPos[2];
+        transform.SetPositionAndRotation(pos, Quaternion.identity);
     }
 }

@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class EnemigoCercano_Control : MonoBehaviour
 {
+    public SonidosBiblioteca sSonidos;
     [SerializeField] float velocidad = 10f;
     [SerializeField] int fuerzaDaño = 15;
-    [SerializeField] float distanciaPerseguir = 10f, distanciaAtacando = 1f;
+    [SerializeField] float distanciaPerseguir = 10f, distanciaMin = 2f;
+    [SerializeField] float distanciaDeGolpe = 3f;
     [SerializeField] float frecuenciaAtaque = 1f; //Cada cuantos segundos ataca
-    private float timerAtaque = 0f;
+    public float timerAtaque = 0f;
     private bool bAtacando = false;
     //Jugador
     private GameObject player; 
@@ -25,35 +27,33 @@ public class EnemigoCercano_Control : MonoBehaviour
     }
     private void Update() 
     {
-        if(Vector3.Distance(transform.position, player.transform.position) < distanciaPerseguir && Vector3.Distance(transform.position, player.transform.position) > distanciaAtacando) //Si cerca, entonces perseguir
-        {
+        if(Vector3.Distance(transform.position, player.transform.position) < distanciaPerseguir && Vector3.Distance(transform.position, player.transform.position) > distanciaMin) //Si cerca, entonces perseguir
+        { //ACERCARSE
             
             transform.LookAt(player.transform); //Mirar al jugador
             Vector3 eulerPos = transform.localEulerAngles; eulerPos.x = 0; //No mirar en eje x
             transform.rotation = Quaternion.Euler(eulerPos);    
             
             transform.position += transform.forward * velocidad * Time.deltaTime; //Acercarse
-        }
-        if(Vector3.Distance(transform.position, player.transform.position) <= distanciaAtacando)
-        {            
-            timerAtaque -= Time.deltaTime;
-
-            if(timerAtaque <= 0)
+            //ATACAR
+            if(Vector3.Distance(transform.position, player.transform.position) <= distanciaDeGolpe)
+            {           
+                if(timerAtaque <= 0)
+                {
+                    Atacar();
+                    timerAtaque = frecuenciaAtaque;
+                } 
+            } 
+            else
             {
-                Atacar();
-                timerAtaque = frecuenciaAtaque;
-            }
-        } 
-        else
-        {
-            timerAtaque = 0f;            
-        } 
-        
+                timerAtaque = 0f;            
+            } 
+        }       
     }
-
     private void Atacar()
     { 
         PlayAnimacionAtaque();
+        sSonidos.Play(player.gameObject.GetComponent<AudioSource>(), sSonidos.Lobo);
         sPlayer.RecibirDaño(fuerzaDaño);
     }
     private void PlayAnimacionAtaque()

@@ -11,88 +11,102 @@ public class Jugador_Ataque : MonoBehaviour
     public int porcentajeDañoBarreta = 25;
     public int porcentajeDañoArmaScientifica = 15;
     public int porcentajeDañoExplosivo = 50;
-    private int armaActual = 0; // 1=Barreta || 2=ArmaScientifica || 3=Explosivo
-    
-    //Especificas a Armas Especificas
+    public int armaActual = 1; // 1=Barreta || 2=ArmaScientifica || 3=Explosivo
+    public SonidosBiblioteca sSonidos;
+    //Animator
+    public string intIddle = "iddleActual", trigBarreta = "barreta", trigDisparo = "disparo", trigExplosivo = "explosivo";
     //Barreta
     public Animator animator;
     private BoxCollider coliderA;
-    public string nombreAnimacionBarreta = "barreta"; //Nombre de la animacion de la barreta atacando
+    //Armas
+    public Transform balaPuntoSalida;
     //Arma scientifica
     public GameObject balaPrefab;
-    private GameObject balaPuntoSalida;
-    public GameObject balas;
-    public int velocidadBala = 100;
     //Explosivo a lanzar
-    public GameObject explosivoPrefab; 
-    private GameObject explosivoPuntoSalida;
-    public int velocidadExplosivo = 10;
+    public GameObject explosivoPrefab;
+    public int balas = 20, explosivos = 5; //cuantas municiones tiene
 
     private void Awake() 
     {
         //Barreta
         coliderA = transform.Find("Ataque_Collider").gameObject.GetComponent<BoxCollider>();
         //Arma Scientifica
-        balaPuntoSalida = GameObject.Find("BalaPuntoSalida").gameObject;
-        //Explosivo a lanzar
-        explosivoPuntoSalida = transform.Find("ExplosivoPuntoSalida").gameObject;
-        balas = GameObject.Find("Balas");
+        balaPuntoSalida = GameObject.Find("BalaPuntoSalida").gameObject.transform;
     }
     private void Update() 
-    {
+    {           
         if(Input.GetButtonDown(nombreBotonCambiarArma))
         {
             armaActual++;
-            if(armaActual==4)
+            if(armaActual>=4)
             armaActual = 1;
+
+            switch (armaActual)
+            {
+                case 1: //Barreta
+                animator.SetInteger(intIddle, 1);
+                break;
+                case 2: //Arma Scientifica
+                animator.SetInteger(intIddle, 2);
+                break;
+                case 3: //Arma Quimica
+                animator.SetInteger(intIddle, 3);
+                break;
+            }
         }
         
         if(Input.GetButtonDown(nombreBotonDispararArma))
-        {DispararArmaScientifica();
-            /*if(armaActual == 2)
+        {
+            switch (armaActual)
             {
-                DispararArmaScientifica();
+                case 1: //barreta
+                animator.SetTrigger(trigBarreta);     //La animacion de ataque de barreta  del jugador 
+                break;
+                case 2:
+                if(balas > 0)
+                DispararArma(2);
+                break;
+                case 3:
+                if(explosivos > 0) //Probar que tenga municiones
+                DispararArma(3);
+                break;
             }
-            else if(armaActual == 3)
-            {
-                TirarExplosivo();
-            }*/
         }
     }
+    //ATAQUE BARRETA
     private void OnTriggerStay(Collider other) //Cuando el collider de ataque del jugador choca con otro GameObject
     {
         if(other.tag == nombreTagEnemigo)              //El GameObject es un enemigo
         if(Input.GetButtonDown(nombreBotonDispararArma) && armaActual==1)         //USAR BARRETA
         {
             other.gameObject.GetComponent<Enemigo_Control>().QuitarVida(porcentajeDañoBarreta);
-            PlayAnimacionBarreta();
         }         
     }
-    private void DispararArmaScientifica()
+    private void DispararArma(int arma)
     {
         ActualizarBalaPuntoSalida();
-        Vector3 posSalida = new Vector3(transform.position.x + 0.5f, balaPuntoSalida.transform.position.y, transform.position.z + 0.75f);
-        GameObject clon = Instantiate(balaPrefab, posSalida, Quaternion.identity) as GameObject; //Instancear bala
-        //Rigidbody balaRB = clon.GetComponent<Rigidbody>();
-        //balaRB.AddRelativeForce(0, velocidadBala, 0); //Velocidad de la bala
-        
+        switch (arma)
+        {
+            case 2: //ARMA SCIENTIFICA
+            animator.SetTrigger(trigDisparo);
+            GameObject clon = Instantiate<GameObject>(balaPrefab, balaPuntoSalida.position, balaPuntoSalida.rotation, balaPuntoSalida); //Instancear bala
+            sSonidos.Play(gameObject.GetComponent<AudioSource>(), sSonidos.Disparo);
+            balas--;
+            break;
+            case 3: //ARMA QUIMICA
+            animator.SetTrigger(trigExplosivo);
+            GameObject clonQ = Instantiate<GameObject>(explosivoPrefab, balaPuntoSalida.position, balaPuntoSalida.rotation, balaPuntoSalida); //Instancear bala
+            sSonidos.Play(gameObject.GetComponent<AudioSource>(), sSonidos.Explosion);
+            explosivos--;
+            break;
+        }        
     }
     private void ActualizarBalaPuntoSalida()
     {
-        Vector3 newPos = new Vector3(transform.position.x + 0.5f, balaPuntoSalida.transform.position.y, transform.position.z + 0.75f);
-        balaPuntoSalida.transform.position = newPos;
-        balaPuntoSalida.transform.rotation = transform.rotation;
+        Vector3 newPos = new Vector3(transform.position.x, 0.5f, transform.position.z);
+        balaPuntoSalida.SetPositionAndRotation(newPos, transform.rotation);
+        balaPuntoSalida.transform.position += transform.forward * 1.5f;   
+        balaPuntoSalida.transform.position += transform.right * 0.5f; 
     }
-
-    private void TirarExplosivo()
-    {
-        GameObject clon = Instantiate<GameObject>(explosivoPrefab, explosivoPuntoSalida.transform.position, explosivoPuntoSalida.transform.rotation, explosivoPuntoSalida.transform); //Instancear explosivo a lanzar
-        Rigidbody explosivoRB = clon.GetComponent<Rigidbody>();
-        //Vector3 dirExplosivo = new Vector3(0, 0.5f, 1); //Direccion que el explosivo es lanzado
-        explosivoRB.velocity = transform.rotation.eulerAngles * velocidadExplosivo; //Velocidad del explosivo
-    }
-    private void PlayAnimacionBarreta()
-    {
-        animator.SetTrigger(nombreAnimacionBarreta);     //La animacion de ataque de barreta  del jugador 
-    }                                              
+                                     
 }

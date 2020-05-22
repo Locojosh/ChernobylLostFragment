@@ -5,6 +5,7 @@ using UnityEngine;
 // Componente: **Collider** > Trigger activado
 public class PowerUpControl : MonoBehaviour
 { 
+    public SonidosBiblioteca sSonidos;
     public int vida = 15; //Cantidad de vida que devuelve al jugador
     private Jugador sPlayer;
     private void Awake() {
@@ -16,6 +17,7 @@ public class PowerUpControl : MonoBehaviour
         {
             //sPlayer.vida += vida;
             sPlayer.RecibirDaño(-vida);
+            sSonidos.Play(gameObject.GetComponent<AudioSource>(), sSonidos.Interaccion);
             Destroy(gameObject);
         }    
     }
