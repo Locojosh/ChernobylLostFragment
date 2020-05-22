@@ -64,13 +64,16 @@
     <Compile Include="Assets\Enemigos\EnemigoCercano\EnemigoCercano_Control.cs" />
     <Compile Include="Assets\Enemigos\EnemigoLejano\BalaEnemigo.cs" />
     <Compile Include="Assets\Enemigos\EnemigoLejano\EnemigoLejano_Control.cs" />
+    <Compile Include="Assets\Guardado\GameData.cs" />
+    <Compile Include="Assets\Guardado\GameSaveLoad.cs" />
+    <Compile Include="Assets\Guardado\PartidasControl.cs" />
     <Compile Include="Assets\Jugador\Scripts\Armas\Bala.cs" />
     <Compile Include="Assets\Jugador\Scripts\Armas\Explosivo.cs" />
     <Compile Include="Assets\Jugador\Scripts\Jugador.cs" />
     <Compile Include="Assets\Jugador\Scripts\Jugador_Ataque.cs" />
     <Compile Include="Assets\Jugador\Scripts\PlayerLook.cs" />
     <Compile Include="Assets\Jugador\Scripts\PlayerMove.cs" />
-    <Compile Include="Assets\PowerUp\PowerUpControl.cs" />
+    <Compile Include="Assets\PowerUp\Botiquin\PowerUpControl.cs" />
     <Compile Include="Assets\Puerta&amp;Llave\LlaveControl.cs" />
     <Compile Include="Assets\Puerta&amp;Llave\PuertaControl.cs" />
     <Compile Include="Assets\SKETCHES(Storyboards)\AnimatedText.cs" />
@@ -79,6 +82,7 @@
     <Compile Include="Assets\UI\GameOver_Control.cs" />
     <Compile Include="Assets\UI\Jugador_Interfaz.cs" />
     <Compile Include="Assets\UI\MenuDeInicio_Control.cs" />
+    <Compile Include="Assets\UI\PausaControl.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />

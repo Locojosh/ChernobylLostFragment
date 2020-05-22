@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Storyboard(Trancisiones).unity
+- path: Assets/VERTICALSLICE/NivelVerticalSlice.unity
   isLoaded: 1
   isActive: 1
