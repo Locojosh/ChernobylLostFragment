@@ -29,7 +29,7 @@ public class BalaEnemigo : MonoBehaviour
         if(other.gameObject.CompareTag("Player"))
         {
             other.gameObject.GetComponent<Jugador>().RecibirDaño(daño);
-            sSonidos.Play(other.gameObject.GetComponent<AudioSource>(), sSonidos.Vaca);
+            sSonidos.Play(other.gameObject.GetComponent<AudioSource>(), sSonidos.Disparo);
             Destroy(gameObject);
         }            
     }

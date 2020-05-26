@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sSonidos: {fileID: 11400000, guid: 013bca0e470c0b77ea1cce8100b01e9d, type: 2}
-  velocidad: 1
+  velocidad: 5
   "da\xF1o": 5
   tiempoDeVida: 2
 --- !u!82 &3535506552688276925
