@@ -103,7 +103,7 @@ public class Jugador_Ataque : MonoBehaviour
     }
     private void ActualizarBalaPuntoSalida()
     {
-        Vector3 newPos = new Vector3(transform.position.x, 0.5f, transform.position.z);
+        Vector3 newPos = new Vector3(transform.position.x, 0f, transform.position.z);
         balaPuntoSalida.SetPositionAndRotation(newPos, transform.rotation);
         balaPuntoSalida.transform.position += transform.forward * 1.5f;   
         balaPuntoSalida.transform.position += transform.right * 0.5f; 
