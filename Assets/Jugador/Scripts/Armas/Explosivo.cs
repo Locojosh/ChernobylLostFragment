@@ -31,11 +31,16 @@ public class Explosivo : MonoBehaviour
 
     private void OnCollisionEnter(Collision other) 
     {
-        if(other.gameObject.tag == "enemigo")
+        if(other.gameObject.name != "Player")
         {
-            other.gameObject.GetComponent<Enemigo_Control>().QuitarVida(porcentajeDañoExplosivo);
-            Explosion();
-        }            
+            if(other.gameObject.tag == "enemigo")
+            {
+                other.gameObject.GetComponent<Enemigo_Control>().QuitarVida(porcentajeDañoExplosivo);
+                Explosion();
+            }  
+            Destroy(gameObject);     
+        }
+             
     }
 
     private void Explosion()

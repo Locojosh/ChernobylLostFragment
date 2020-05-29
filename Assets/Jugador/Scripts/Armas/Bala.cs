@@ -28,10 +28,13 @@ public class Bala : MonoBehaviour
     }
     private void OnCollisionEnter(Collision other) 
     {
-        if(other.gameObject.tag == "enemigo")
+        if(other.gameObject.name != "Player")
         {
-            other.gameObject.GetComponent<Enemigo_Control>().QuitarVida(porcentajeDañoArmaScientifica);
+            if(other.gameObject.tag == "enemigo")
+            {
+                other.gameObject.GetComponent<Enemigo_Control>().QuitarVida(porcentajeDañoArmaScientifica);
+            }            
             Destroy(gameObject);
-        }            
+        }        
     }
 }

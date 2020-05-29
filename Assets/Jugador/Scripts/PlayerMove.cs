@@ -14,17 +14,20 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float jumpMultiplier;
     [SerializeField] private KeyCode jumpKey;
 
-
+    private Jugador sPlayer;
     private bool isJumping;
 
     private void Awake()
     {
         charController = GetComponent<CharacterController>();
+        sPlayer = gameObject.GetComponent<Jugador>();
     }
 
     private void Update()
     {
         PlayerMovement();
+        //if(transform.position.y < 75)
+        //sPlayer.RecibirDaño(101);
     }
 
     private void PlayerMovement()

@@ -819,7 +819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7118ccaeb114a074cb39ae899502f042, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nombreNivel1: "Nivel_1\x13"
+  nombreNivel1: nivel1
   letterPaused: 0.025
   message:
   - Las acciones del ser humano son impredesibles verdad?
